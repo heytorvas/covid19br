@@ -14,7 +14,7 @@ def convert_df_json(df):
         row['date'] = row['date'].__str__()
         list_dict.append(dict(row))
     
-    return json.dumps(list_dict)
+    return json.dumps(list_dict, ensure_ascii=False)
 
 def get_general_cases(state, args):
     df = get_data_pandas('database/cases-brazil-states.csv')
@@ -31,12 +31,12 @@ def get_general_cases(state, args):
 def get_cities_cases(state, city, args):
     df = get_data_pandas('database/cases-brazil-cities-time.csv')
     df['date'] = pandas.to_datetime(df['date'])
-    df['city'] = df['city'].apply(lambda x : slugify(format_city(x)))
+    df['city'] = df['city'].apply(lambda x : format_city(x))
 
     if args[0] == None or args[1] == None:
-        mask = (df['state'] == state) & (df['city'] == slugify(city))
+        mask = (df['state'] == state) & (df['slug'] == slugify(city))
         return df.loc[mask]
     
     else:
-        mask = (df['state'] == state) & (df['city'] == slugify(city)) & (df['date'] >= datetime.strptime(args[0], '%Y-%m-%d')) & (df['date'] <= datetime.strptime(args[1], '%Y-%m-%d'))
+        mask = (df['state'] == state) & (df['slug'] == slugify(city)) & (df['date'] >= datetime.strptime(args[0], '%Y-%m-%d')) & (df['date'] <= datetime.strptime(args[1], '%Y-%m-%d'))
         return df.loc[mask]
