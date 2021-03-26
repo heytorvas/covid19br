@@ -8,18 +8,25 @@ def query_string():
     args_list = []
     args_list.append(request.args.get('start'))
     args_list.append(request.args.get('end'))
-    args_list.append(request.args.get('limit'))
+    #args_list.append(request.args.get('limit'))
     return args_list
 
-@app.route("/api/brazil")
+@app.route("/api/brazil/")
 def brazil():
-    #args = query_string()
-    df = get_general_cases('TOTAL')
+    args = query_string()
+    df = get_general_cases('TOTAL', args)
     return convert_df_json(df)
 
-@app.route("/api/brazil/<state>")
+@app.route("/api/brazil/<state>/")
 def by_state(state):
-    df = get_general_cases(state.upper())
+    args = query_string()
+    df = get_general_cases(state.upper(), args)
+    return convert_df_json(df)
+
+@app.route("/api/brazil/<state>/<city>/")
+def by_city(state, city):
+    args = query_string()
+    df = get_cities_cases(state.upper(), city, args)
     return convert_df_json(df)
 
 if __name__ == "__main__":
