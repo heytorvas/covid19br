@@ -8,7 +8,7 @@ def query_string():
     args_list = []
     args_list.append(request.args.get('start'))
     args_list.append(request.args.get('end'))
-    #args_list.append(request.args.get('limit'))
+    args_list.append(request.args.get('limit'))
     return args_list
 
 @app.route("/api/brazil/")
