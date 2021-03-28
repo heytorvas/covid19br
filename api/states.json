@@ -1,0 +1,110 @@
+[
+    {
+        "state": "AC",
+        "name": "Acre"
+    },
+    {
+        "state": "AL",
+        "name": "Alagoas"
+    },
+    {
+        "state": "AM",
+        "name": "Amazonas"
+    },
+    {
+        "state": "AP",
+        "name": "Amapá"
+    },
+    {
+        "state": "BA",
+        "name": "Bahia"
+    },
+    {
+        "state": "CE",
+        "name": "Ceará"
+    },
+    {
+        "state": "DF",
+        "name": "Distrito Federal"
+    },
+    {
+        "state": "ES",
+        "name": "Espírito Santo"
+    },
+    {
+        "state": "GO",
+        "name": "Goiás"
+    },
+    {
+        "state": "MA",
+        "name": "Maranhão"
+    },
+    {
+        "state": "MG",
+        "name": "Minas Gerais"
+    },
+    {
+        "state": "MS",
+        "name": "Mato Grosso do Sul"
+    },
+    {
+        "state": "MT",
+        "name": "Mato Grosso"
+    },
+    {
+        "state": "PA",
+        "name": "Pará"
+    },
+    {
+        "state": "PB",
+        "name": "Paraíba"
+    },
+    {
+        "state": "PE",
+        "name": "Pernambuco"
+    },
+    {
+        "state": "PI",
+        "name": "Piauí"
+    },
+    {
+        "state": "PR",
+        "name": "Paraná"
+    },
+    {
+        "state": "RJ",
+        "name": "Rio de Janeiro"
+    },
+    {
+        "state": "RN",
+        "name": "Rio Grande do Norte"
+    },
+    {
+        "state": "RO",
+        "name": "Rondônia"
+    },
+    {
+        "state": "RR",
+        "name": "Roraima"
+    },
+    {
+        "state": "RS",
+        "name": "Rio Grande do Sul"
+    },
+    {
+        "state": "SC",
+        "name": "Santa Catarina"
+    },
+    {
+        "state": "SE",
+        "name": "Sergipe"
+    },
+    {
+        "state": "SP",
+        "name": "São Paulo"
+    },
+    {
+        "state": "TO",
+        "name": "Tocantins"
+    }
+]

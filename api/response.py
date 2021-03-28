@@ -2,6 +2,30 @@ import pandas, json
 from datetime import datetime
 from slugify import slugify
 
+def get_json_cities_state(state):
+    df = get_data_pandas('database/cases-brazil-cities-time.csv')
+    mask = (df['state'] == state)
+    df_mask = df.loc[mask]
+    return get_cities_state(df_mask['city'].unique().tolist())
+
+def get_json_cities_brazil():
+    df = get_data_pandas('database/cases-brazil-cities-time.csv')
+    return get_cities_state(df['city'].unique().tolist())
+
+def get_cities_state(df_city):
+    city_list = []
+    df_city = sorted(df_city)
+    for city in df_city:
+        if 'CASO' in city or 'TOTAL' in city:
+            pass
+        else:
+            city_list.append({
+                'slug': slugify(city.split('/')[0].strip()),
+                'city': city.split('/')[0].strip(),
+                'state': city.split('/')[1].strip()
+            })
+    return json.dumps(city_list, ensure_ascii=False)
+
 def get_data_pandas(path):
     return pandas.read_csv(path)
 
