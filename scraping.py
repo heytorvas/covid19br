@@ -54,12 +54,15 @@ def get_csv_cases_cities():
 
     print('cities finished')
 
+# get_csv_cases_states()
+# get_csv_cases_cities()
 
-def job():
-    get_csv_cases_states()
-    get_csv_cases_cities()
 
-schedule.every().day.at("02:00").do(job)
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+# def job():
+#     get_csv_cases_states()
+#     get_csv_cases_cities()
+
+# schedule.every().day.at("02:00").do(job)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(1)

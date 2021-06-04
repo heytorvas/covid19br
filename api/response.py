@@ -1,6 +1,15 @@
-import pandas, json
+import pandas, json, csv
 from datetime import datetime
 from slugify import slugify
+from json2xml import json2xml
+from json2xml.utils import readfromstring
+
+def convert_df_csv(toCSV):
+    keys = toCSV[0].keys()
+    with open('api/result.csv', 'w', newline='') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(toCSV)
 
 def get_json_cities_state(state):
     df = get_data_pandas('database/cases-brazil-cities-time.csv')
@@ -39,6 +48,14 @@ def set_limit_response(df, args):
     else:
         return limit
 
+def convert_df_xml(df):
+    list_dict = []
+    for index, row in list(df.iterrows()):
+        row['date'] = row['date'].__str__()
+        list_dict.append(dict(row))
+    json_dict = readfromstring(str(json.dumps(list_dict, ensure_ascii=False)))
+    return json2xml.Json2xml(json_dict, wrapper="all", pretty=True).to_xml()
+
 def convert_df_json(df):
     list_dict = []
     for index, row in list(df.iterrows()):
@@ -46,6 +63,14 @@ def convert_df_json(df):
         list_dict.append(dict(row))
     
     return json.dumps(list_dict, ensure_ascii=False)
+
+def convert_df_dict(df):
+    list_dict = []
+    for index, row in list(df.iterrows()):
+        row['date'] = row['date'].__str__()
+        list_dict.append(dict(row))
+
+    return list_dict
 
 def get_general_cases(state, args):
     df = get_data_pandas('database/cases-brazil-states.csv')
